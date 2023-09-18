@@ -6,9 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
-use Trappistes\AliyunRocketMQ\RocketMQPayload;
+use Trappistes\AliyunRocketMQ\AliyunRocketMQPayload;
 
-class RocketMQPlainJob implements RocketMQPayload, ShouldQueue
+class AliyunRocketMQPlainJob implements AliyunRocketMQPayload, ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 

@@ -6,10 +6,10 @@ use MQ\Model\TopicMessage;
 use MQ\MQConsumer;
 use MQ\MQProducer;
 use PHPUnit\Framework\TestCase;
-use Trappistes\AliyunRocketMQ\Connectors\RocketMQConnector;
-use Trappistes\AliyunRocketMQ\Jobs\RocketMQJob;
+use Trappistes\AliyunRocketMQ\Connectors\AliyunRocketMQConnector;
+use Trappistes\AliyunRocketMQ\Jobs\AliyunRocketMQJob;
 
-class RocketMQQueueTest extends TestCase
+class AliyunRocketMQQueueTest extends TestCase
 {
     public function provider(): array
     {
@@ -36,7 +36,7 @@ class RocketMQQueueTest extends TestCase
 
         ];
 
-        $connector = new RocketMQConnector();
+        $connector = new AliyunRocketMQConnector();
 
         $queue = $connector->connect($config);
 
@@ -48,7 +48,7 @@ class RocketMQQueueTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testIsPlain(RocketMQQueue $queue, $config)
+    public function testIsPlain(AliyunRocketMQQueue $queue, $config)
     {
         $this->assertSame($config['plain']['enable'], $queue->isPlain());
     }
@@ -56,7 +56,7 @@ class RocketMQQueueTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testGetPlainJob(RocketMQQueue $queue, $config)
+    public function testGetPlainJob(AliyunRocketMQQueue $queue, $config)
     {
         $this->assertSame($config['plain']['job'], $queue->getPlainJob());
     }
@@ -64,7 +64,7 @@ class RocketMQQueueTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testSize(RocketMQQueue $queue, $config)
+    public function testSize(AliyunRocketMQQueue $queue, $config)
     {
         $this->assertGreaterThanOrEqual(1, $queue->size());
     }
@@ -72,9 +72,9 @@ class RocketMQQueueTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testPush(RocketMQQueue $queue, $config)
+    public function testPush(AliyunRocketMQQueue $queue, $config)
     {
-        $queue = \Mockery::mock(RocketMQQueue::class)
+        $queue = \Mockery::mock(AliyunRocketMQQueue::class)
             ->shouldAllowMockingProtectedMethods();
 
         $queue->expects()
@@ -89,9 +89,9 @@ class RocketMQQueueTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testPushRaw(RocketMQQueue $queue, $config)
+    public function testPushRaw(AliyunRocketMQQueue $queue, $config)
     {
-        $queue = \Mockery::mock(RocketMQQueue::class)
+        $queue = \Mockery::mock(AliyunRocketMQQueue::class)
             ->shouldAllowMockingProtectedMethods();
 
         $queue->expects()
@@ -106,9 +106,9 @@ class RocketMQQueueTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testLater(RocketMQQueue $queue, $config)
+    public function testLater(AliyunRocketMQQueue $queue, $config)
     {
-        $queue = \Mockery::mock(RocketMQQueue::class)
+        $queue = \Mockery::mock(AliyunRocketMQQueue::class)
             ->shouldAllowMockingProtectedMethods();
 
         $queue->expects()
@@ -123,24 +123,24 @@ class RocketMQQueueTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testPop(RocketMQQueue $queue, $config)
+    public function testPop(AliyunRocketMQQueue $queue, $config)
     {
-        $client = \Mockery::mock(RocketMQQueue::class)
+        $client = \Mockery::mock(AliyunRocketMQQueue::class)
             ->shouldAllowMockingProtectedMethods();
 
         $client->expects()
             ->pop()
             ->andReturn(
-                \Mockery::mock(RocketMQJob::class)
+                \Mockery::mock(AliyunRocketMQJob::class)
             );
 
-        $this->assertInstanceOf(RocketMQJob::class, $client->pop());
+        $this->assertInstanceOf(AliyunRocketMQJob::class, $client->pop());
     }
 
     /**
      * @dataProvider provider
      */
-    public function testGetConsumer(RocketMQQueue $queue, $config)
+    public function testGetConsumer(AliyunRocketMQQueue $queue, $config)
     {
         $this->assertInstanceOf(MQConsumer::class, $queue->getConsumer());
     }
@@ -148,7 +148,7 @@ class RocketMQQueueTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testGetProducer(RocketMQQueue $queue, $config)
+    public function testGetProducer(AliyunRocketMQQueue $queue, $config)
     {
         $this->assertInstanceOf(MQProducer::class, $queue->getProducer());
     }

@@ -3,8 +3,9 @@
 namespace Trappistes\AliyunRocketMQ;
 
 use Illuminate\Support\ServiceProvider;
+use Trappistes\AliyunRocketMQ\Connectors\AliyunRocketMQConnector;
 
-class RocketMQServiceProvider extends ServiceProvider
+class AliyunRocketMQServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -14,9 +15,6 @@ class RocketMQServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/rocketmq.php', 'queue.connections.rocketmq');
-        $this->publishes([
-            __DIR__.'/Jobs/RocketMQPlainJob.php' => base_path('app/Jobs/RocketMQPlainJob.php'),
-        ]);
     }
 
     /**
@@ -29,7 +27,7 @@ class RocketMQServiceProvider extends ServiceProvider
         $queue_manager = $this->app['queue'];
 
         $queue_manager->addConnector('rocketmq', function () {
-            return new RocketMQConnector();
+            return new AliyunRocketMQConnector();
         });
     }
 }

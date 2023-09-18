@@ -2,7 +2,7 @@
 
 namespace Trappistes\AliyunRocketMQ;
 
-interface RocketMQPayload
+interface AliyunRocketMQPayload
 {
     /**
      * Get the plain payload of the job.

@@ -1,17 +1,5 @@
 <?php
 
-// +----------------------------------------------------------------------
-// | 云计量系统 [ 博海计量科技 ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2021~2025 https://www.bohaicz.com All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed 此软件必须经广东博海计量科技有限公司授权使用
-// +----------------------------------------------------------------------
-// | Author: 博海计量科技 BoHaiTeam <admin@bohaicz.com>
-// +----------------------------------------------------------------------
-
-declare(strict_types=1);
-
 namespace Trappistes\AliyunRocketMQ;
 
 use Exception;
@@ -27,7 +15,7 @@ use MQ\MQProducer;
 use ReflectionException;
 use ReflectionMethod;
 
-class RocketMQQueue extends Queue implements QueueContract
+class AliyunRocketMQQueue extends Queue implements QueueContract
 {
     /**
      * @var array

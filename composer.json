@@ -5,7 +5,7 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Trappistes\\AliyunRocketmq\\": "src/"
+            "Trappistes\\AliyunRocketMQ\\": "src/"
         }
     },
     "authors": [
@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Trappistes\\RocketMQ\\RocketMQServiceProvider"
+                "Trappistes\\AliyunRocketMQ\\AliyunRocketMQServiceProvider"
             ]
         }
     }

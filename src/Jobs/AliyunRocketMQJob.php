@@ -6,14 +6,14 @@ use Illuminate\Container\Container;
 use Illuminate\Contracts\Queue\Job as JobContract;
 use Illuminate\Queue\Jobs\Job;
 use MQ\Model\Message;
-use Trappistes\AliyunRocketMQ\RocketMQQueue;
+use Trappistes\AliyunRocketMQ\AliyunRocketMQQueue;
 
-class RocketMQJob extends Job implements JobContract
+class AliyunRocketMQJob extends Job implements JobContract
 {
     /**
-     * @var RocketMQQueue
+     * @var AliyunRocketMQQueue
      */
-    protected RocketMQQueue $connection;
+    protected AliyunRocketMQQueue $connection;
 
     /**
      * @var Message
@@ -24,17 +24,17 @@ class RocketMQJob extends Job implements JobContract
      * Create a new job instance.
      *
      * @param  Container  $container
-     * @param  RocketMQQueue  $connection
+     * @param  AliyunRocketMQQueue  $connection
      * @param  Message  $message
      * @param  string  $queue
      * @param  string  $connectionName
      */
     public function __construct(
-        Container $container,
-        RocketMQQueue $connection,
-        Message $message,
-        string $queue,
-        string $connectionName
+        Container           $container,
+        AliyunRocketMQQueue $connection,
+        Message             $message,
+        string              $queue,
+        string              $connectionName
     ) {
         $this->container = $container;
         $this->connection = $connection;

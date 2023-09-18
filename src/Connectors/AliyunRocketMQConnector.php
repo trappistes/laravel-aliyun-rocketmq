@@ -5,14 +5,14 @@ namespace Trappistes\AliyunRocketMQ\Connectors;
 use Illuminate\Queue\Connectors\ConnectorInterface;
 use MQ\MQClient;
 use ReflectionException;
-use Trappistes\AliyunRocketMQ\RocketMQQueue;
+use Trappistes\AliyunRocketMQ\AliyunRocketMQQueue;
 
-class RocketMQConnector implements ConnectorInterface
+class AliyunRocketMQConnector implements ConnectorInterface
 {
     /**
      * @throws ReflectionException
      */
-    public function connect(array $config): RocketMQQueue
+    public function connect(array $config): AliyunRocketMQQueue
     {
         $client = new MQClient(
             $config['endpoint'],
@@ -20,6 +20,6 @@ class RocketMQConnector implements ConnectorInterface
             $config['access_key']
         );
 
-        return new RocketMQQueue($client, $config);
+        return new AliyunRocketMQQueue($client, $config);
     }
 }
