@@ -1,0 +1,27 @@
+{
+    "name": "trappistes/laravel-aliyun-rocketmq",
+    "description": "Laravel 阿里云 RocketMQ",
+    "license": "MIT",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Trappistes\\AliyunRocketmq\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "刘阳",
+            "email": "182050940@qq.com"
+        }
+    ],
+    "require": {
+        "aliyunmq/mq-http-sdk": "^1.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Trappistes\\RocketMQ\\RocketMQServiceProvider"
+            ]
+        }
+    }
+}
